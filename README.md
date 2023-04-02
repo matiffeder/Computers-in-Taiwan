@@ -1,2 +1,3 @@
 # Computers-in-Taiwan
-A Project for Northeastern University
+
+[Design Document](https://matif.neocities.org/DesignDocument.pdf)
