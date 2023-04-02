@@ -1,0 +1,1031 @@
+/* load font from google */
+@import url('https://fonts.googleapis.com/css?family=Coda&display=swap');
+
+/* use these font in all the pages, if the first one is unavailable, then use the following one*/
+*{
+    font-family: "Coda", sans-serif;
+}
+
+body{
+    /* there was magin on the body, so I set it to zero to make the website look better. it could also be just 0 wtihout unit like px or em*/
+    margin: 0px;
+    /* the texts color for most of title */
+    color: #2C3E50;
+}
+
+a{
+    /* do not use default link decoration on all links, such as blue texts color or underline */
+    text-decoration: none;
+    /* use inherit color for link texts */
+    color: inherit;
+}
+
+/* do not apply to .logo https://developer.mozilla.org/en-US/docs/Web/CSS/:not */
+img :not(.logo) { 
+    /* the minimum width for responsive image */
+    min-width: 100px;
+}
+
+/* . means class, # means id */
+#sideNav{
+    /* position: fixed > the element will not move while mouse scroll */
+    position: fixed;
+    /* if I use 8% here, the distance will smaller than 8vh when I test it on my phone since 8% is for the parent instead of the screen view */
+    /* 8vh is 8% of view hight, so the value will change according to the view hight */
+    /* top: 8vh is move 8vh from top */
+    top: 8vh;
+    /* 10% of the parent width */
+    /* set the width of the element */
+    width: 10%;
+    min-width: 80px;
+    height: 100%;
+    /* align texts to center */
+    text-align: center;
+    /* the background color for the element, here is side navigation menu */
+    background-color:#e25555;
+    /* the transition duration to change the style, here is for slide in/out the menu */
+    transition-duration: 0.5s;
+    /* hide the shadow of the element and show it when mouse hover */
+    box-shadow: none;
+}
+
+/* @media > https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries */
+/* when screen height is smaller than 295, it will use following attributes */
+@media screen and (max-height: 295px) {
+    #sideNav{
+        /* the minimum height of the header is 24 px, and I want to put the menu under the header */
+        top: 24px;
+        /* since I want the menu shows the same height as the page, the height should be the view height - header height */
+        /* calc > https://developer.mozilla.org/en-US/docs/Web/CSS/calc() */
+        height: calc(100vh - 24px);
+    }
+}
+
+/* :hover{ means set the style after mouse over */
+#sideNav:hover{
+    /* set shadow of the element, attr are color, x-offset, y-offset, and size of the shadow */
+    /* show shadow when mouse hover */
+    box-shadow: rgba(0, 0, 0, .5) 2px 0px 5px;
+}
+
+/* set the style of navigation menu */
+#sideNav a{
+    /* the line height the element */
+    line-height: 9vh;
+    color: white;
+    /* default of display is inline and the links will show closer when inline, block shows elements as blocks */
+    display: block;
+    transition-duration: 0.7s;
+    /* set the font size of the element */
+    /* max(a,b) > choose the one that the number is heightest https://developer.mozilla.org/en-US/docs/Web/CSS/max() */
+    /* so here is when the 1.5vw smaller than 12px than the font size will be 12px */
+    /* in other words, this line claim the minimum font size as 12px */
+    font-size: max(12px, 1.5vw);
+}
+
+@media screen and (max-height: 450px) {
+    #sideNav a{
+        /* make the height higher to avoid text covering */
+        line-height: 10vh;
+    }
+}
+
+#sideNav a:hover{
+    /* set shadow of the texts, attr are color, x-offset, y-offset, and size of the shadow */
+    text-shadow: rgba(0, 0, 0, .7) 2px 2px 3px;
+}
+
+/* this way to show/hide menu worked */
+/* but when click on parent option on sideNav, the subSide options will not hide until mouse leave */
+/* so i use js to execute hover function */
+/* I want to keep it because I wrote it and I think I would use it someday */
+/* a+b means apply the atrribute to the first element which is b after a
+#sideNav a:hover + .subSide{
+    display: block;
+}
+
+/* do not hide subSide after leave #sideNav a
+.subSide:hover{
+    display: block;
+}
+
+/* this way to hide subSide only works on mouse down, the subSide will show again on mouse up 
+#sideNav a:active + .subSide{
+    display: none;
+} */
+
+.subSide{
+    /* hide the element */
+    display: none;
+    /* absolute > the position that not relative to other elements in the same level */
+    position: absolute;
+    left: 100%;
+    width: 100%;
+    text-align: center;
+    background-color:#e26262;
+    transition-duration: 0.5s;
+    box-shadow: rgba(0, 0, 0, .5) 2px 0px 5px;
+}
+
+/* the sub menu will shows just under its parent, so the offset of the sub menu have move up to one line height */
+#sub1{
+    top: 0vh;
+}
+
+/* because I use absolute position here, the second sub menu should move down 1 line height according to its order */
+#sub2{
+    top: 9vh;
+}
+
+#sub3{
+    top: 45vh;
+}
+
+@media screen and (max-height: 450px) {
+    #sideNav a{
+        line-height: 10vh;
+    }
+    #sub2{
+        top: 10vh;
+    }
+    #sub3{
+        top: 50vh;
+    }
+}
+
+@media screen and (max-height: 295px) {
+    .subSide{
+        top: 24px;
+    }
+}
+
+.subSide a{
+    line-height: 9vh;
+    color: white;
+    display: block;
+    transition-duration: 0.7s;
+    font-size: max(12px, 1.5vw);
+}
+
+@media screen and (max-height: 450px) {
+    .subSide a{
+        line-height: 10vh;
+    }
+}
+
+.subSide a:hover{
+    text-shadow: rgba(0, 0, 0, .7) 2px 2px 3px;
+}
+
+.header{
+    background: #1d243d;
+    color: white;
+    /* padding: 1vh; /* the padding will fill in whole background color rather than left white on top and bottom */
+    height: 8vh;
+    min-height: 24px;
+    /* use flex to align elements. learn more: https://medium.com/%E7%8B%97%E5%A5%B4%E5%B7%A5%E7%A8%8B%E5%B8%AB/css-flexbox-%E4%BC%B8%E7%B8%AE%E8%87%AA%E5%A6%82%E7%9A%84%E6%8E%92%E7%89%88-%E5%9F%BA%E7%A4%8E%E8%A7%80%E5%BF%B5-85ffe3ae44b3 */
+    display: flex;
+    /* flex-direction: row is default */
+    /* if want to put elements on vertical center when use row, should use {align-items: left}. when use column, should use {justify-content: center} */
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, .5) -5px 2px 5px;
+}
+
+#head{
+    font-size: 3vh;
+}
+
+#head:hover{
+    /* use animation on the element, attr are name of the keyframesm duration, times to play the animation */
+    animation: glowing 1.5s infinite;
+}
+
+/* the keyframes of animation, and the name of the keyframes is glowing */
+@keyframes glowing {
+    /* X% stand for the % of duration */
+    0%   {text-shadow: rgb(255, 136, 0) 0px 0px 5px;}
+    50%  {text-shadow: rgb(255, 136, 0, .2) 0px 0px 5px;}
+    100% {text-shadow: rgb(255, 136, 0) 0px 0px 5px;}
+}
+
+#mute{
+    position: absolute;
+    right: 8px;
+    font-size: 3vh;
+    /* remove default style */
+    background: none;
+    /* remove default style */
+    border: none;
+    color: white;
+    /* shows link cursor when hover the element https://developer.mozilla.org/zh-TW/docs/Web/CSS/cursor */
+    cursor: pointer; 
+}
+
+#muteCaption{
+    /* make the element relative to previous */
+    position: relative;
+    top: -0.3vh;
+    right: 1vw;
+    font-size: 2vh;
+    display: none;
+}
+
+#mute:hover :not(#muteCaption){
+    animation: glowing  2s infinite;
+}
+
+/* when hover on mute show muteCaption */
+#mute:hover #muteCaption{
+    display: inline;
+}
+
+/* make the #muteCaption will not cover the title when using phone */
+@media screen and (max-width: 360px) {
+    #mute:hover #muteCaption{
+        display: none;
+    }
+}
+
+#menu{
+    position: absolute;
+    font-size: 2vh;
+    left: 8px;
+    background: none;
+    border: none;
+    color: white;
+}
+
+#menu:hover{
+    animation: glowing 2s infinite;
+}
+
+#logo{
+    height: max(18px, 5vh);
+    width: max(18px, 5vh);
+}
+
+.level1{
+    position: relative;
+    width: 100vw;
+    /* because the header is 8vh */
+    /* so the page should use 92% of page height (viewport) or the other height when the header using min-height 24px */
+    height: min(92vh, calc(100vh - 24px));
+    /* the way to show scroll page https://www.youtube.com/watch?v=vHr3Li0-SP0 */
+    overflow: auto;
+    /* force scroll down up at each content https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-type */
+    scroll-snap-type: y mandatory;
+    /* apply smooth scroll on the element */
+    /* the click scroll behavoir on firefox mobile will stop at wrong offest on level 2 but no problem on chrome mobile*/
+    scroll-behavior: smooth;
+    /* -moz-scroll-snap-type: y mandatory;
+    -moz-scroll-behavior: smooth; 
+    overflow-y: scroll; */
+}
+
+ /* nth-child(1) means the 1st elements which use the class level2 https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child */
+ /* add an element after the element */
+ /* this is the top-left backgorund */
+.level2:nth-child(1)::after {
+    /* use for clearfix and background image */ /* learn more: https://www.oxxostudio.tw/articles/201706/pseudo-element-1.html */
+    content: "";
+    /* pic from https://weitravelblog.wordpress.com/2019/05/22/%E6%94%9D%E5%BD%B1%E6%97%A5%E8%A8%98-%E5%8F%B0%E5%8C%97%E4%B8%AD%E6%AD%A3%E7%B4%80%E5%BF%B5%E5%A0%82%EF%BC%8C%E6%8B%8D%E6%94%9D%E6%9C%80%E7%BE%8E%E6%B0%B4%E4%B8%AD%E5%80%92%E5%BD%B1/ */
+    background-image: url("https://matif.neocities.org/img/liberty-square.png"); 
+    /* fill pic to the screen */
+    background-size: cover;
+    /* change layer level to the bottom */
+    z-index: -1; 
+    /* position setting are need to make the background in the right position */
+    position: absolute; 
+    top: -60px;
+    right: 0px;
+    bottom: 0px;
+    left: -80px;
+    /* opacity: .85; */
+}
+
+/* add an element after the element */
+/* this is the bottom-right backgorund */
+.level2:nth-child(2)::before, .level2:nth-child(3)::before, .level2:nth-child(5)::before, .level2:nth-child(6)::before, .level2:nth-child(7)::before, .level2:nth-child(9)::before { 
+    content: "";
+    /* pic from https://www.freepik.com/free-vector/futuristic-technological-wallpaper_10987658.htm */
+    background-image: url("https://matif.neocities.org/img/back1.png");
+    /* do not cut or change the ratio of the pic */
+    background-size: contain;
+    /* do not repeat the pic */
+    background-repeat: no-repeat;
+    z-index: -1;
+    position: absolute;
+    top: -10px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
+
+.level2:nth-child(2)::after, .level2:nth-child(3)::after, .level2:nth-child(5)::after, .level2:nth-child(6)::after, .level2:nth-child(7)::after, .level2:nth-child(9)::after { 
+    content: ""; 
+    background-image: url("https://matif.neocities.org/img/back2.png"); 
+    /* put image on the bottom-right coner */
+    background-position: right bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: -1; 
+    position: absolute; 
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
+
+.level2{ 
+    /* background-color: #ffe3e2; */
+    position: relative;
+    /* 100% of the div */
+    width: 100%; 
+    /* height: 100% is same as height: min(92vh, calc(100vh - 24px)); */
+    height: 100%;
+    /* the scroll-snap-align is not smooth on chrome because of a bug https://bugs.chromium.org/p/chromium/issues/detail?id=1220732&q=scroll%20snap%20delay&can=2*/
+    /* scroll down up at each top of content https://css-tricks.com/almanac/properties/s/scroll-snap-align/ */
+    scroll-snap-align: start; 
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    /* if want to put elements on vertical center when use row, should use {align-items: left}. when use column, should use {justify-content: center} */
+    flex-direction: column; 
+    /* clip element if it is over the oage */
+    overflow: clip;
+}
+
+#home{
+    align-items: center;
+    font-size: max(22px, 3.5vw);
+}
+
+/* do not wrap texts if the width is bigger than 594px */
+@media screen and (min-width: 594px) {
+    .widthWrap{
+        display: none;
+    }
+}
+
+#welcome{
+    /* margin is the element's distance between other elements */
+    /* attr are top right bottom left/ */
+    margin: 2% 0% 5% 0%;
+    /* padding is a part of the element, the background color will fill in the padding but not margin */
+    /* attr are top/bottom, and left/right */
+    padding: .3% 1.5%;
+    background-color: #1d243d;
+    animation: hightlightColor 3s infinite;
+}
+
+.homeIcon{
+    /* attr are top, right, bottom, and left */
+    padding: 2% 2% 1% 2%;
+    background-color: #1d243d;
+    color: white;
+}
+
+#arrow{
+    padding: .2% 1%;
+}
+
+@keyframes hightlightColor {
+    0%   {color: white;}
+    50%  {color: #fdc071;}
+    100% {color: white;}
+}
+
+/* hide scroll bar on Chrome, Safari https://stackoverflow.com/questions/16670931/hide-scroll-bar-but-while-still-being-able-to-scroll */
+#descWhy::-webkit-scrollbar, #descTSMC::-webkit-scrollbar, #descMark::-webkit-scrollbar, #descShip::-webkit-scrollbar, #collapsibleMenu::-webkit-scrollbar, #productsScroll::-webkit-scrollbar{ 
+    display: none;  
+}
+
+.titleAnimation{
+    text-shadow: rgba(0, 0, 0, .5) 2px 2px 6px;
+    animation: shadowDirection 2s 1;
+}
+
+.descAnimation{
+    animation: slideFadeIn 2s 1;
+}
+
+@keyframes shadowDirection {
+    0%   {text-shadow: rgba(0, 0, 0, .5) 2px 10px 6px;}
+    100% {text-shadow: rgba(0, 0, 0, .5) 2px 2px 6px;}
+}
+
+@keyframes slideFadeIn {
+    /* opacity > use opacity to change the opacity of the element, from 0 to 1 */
+    0%   {left: 10vw; opacity: .3;}
+    100% {left: 0; opacity: 1;}
+}
+
+#twIsland{ /* 1st way pratice: use absolute position to put elements */
+    position: absolute;
+    /* change layer level to the bottom, -1 have been used */
+    z-index: -2; 
+    top: 7%;
+    left: 10%;
+    height: 85%;
+    /* use auto to keep ratio */
+    width: auto;
+}
+
+#titleWhy{ /* 1st way: use absolute position */
+    position: absolute; 
+    top: 20%;
+    /* also use padding to put the element */
+    /* could also be padding: 10% 10vw 0vh 20vw without top position */
+    padding: 0vh 10vw 0vh 20vw;
+    margin: 0px;
+    /* set minimum font size as 20px.  https://stackoverflow.com/questions/23984629/how-to-set-min-font-size-in-css 3vw means 3% width of viewport */
+    font-size: calc(20px + 2.5vw); 
+    /* ↓↓↓ this works too, just try to pratice differnt skills */
+    /* font-size: max(20px, 3.8vw); */
+}
+
+#descWhy{ /* 1st way: use absolute position */
+    position: absolute; 
+    top: 40%;
+    height: 40%;
+    /* do not wrap texts when use the animation move from left, only need on absolute */
+    width: 60vw; 
+    padding: 0vh 20vw;
+    font-size: calc(16px + 0.5vw);
+    color: #1d243d;
+    text-align: left;
+    /* if the text over the page then make it able to scroll */
+    overflow: scroll;
+    /* clip item on x but allow some scrolling */
+    overflow-x: hidden;
+    /* scroll y when is needed */
+    overflow-y: auto;
+    /* hide scroll bar on Firefox */
+    scrollbar-width: none;
+}
+
+#companies{
+    align-items: center;
+}
+
+#titleCompanies{
+    padding: 0vh 0vw 5vh 0vw;
+    margin: 0%;
+    font-size: calc(20px + 2.5vw);
+}
+
+.listImg{
+    width: auto;
+    height: 8vw;
+    transition-duration: 0.5s;
+}
+
+.listImg:hover{
+    /* change the scale to 1.1 and rotate -2 degree https://developer.mozilla.org/zh-TW/docs/Web/CSS/transform */
+    transform: scale(1.1) rotate(-2deg); 
+    /* shadow for transparent pic */
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/drop-shadow() */
+    filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.5)) 
+}
+
+.reaponded-row{
+    display: none;
+}
+
+/* show logos in different way when screen is portrait */
+@media screen and (orientation:portrait) {
+    .reaponded-row{
+        display: inline;
+        margin: 3vh 0vw;
+    }
+    .row{
+        display: none;
+    }
+    .level2:nth-child(6)::before{
+        background-image: none;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #titleCompanies{
+        font-size: 7vw;
+    }
+}
+
+#imgTSMC{ /* 2nd way: use absolute position (display: flex; justify-content: center; flex-direction: column;) to put image */
+    /* do not flex with others, only center it vertically */
+    position: absolute; 
+    left: 10%;
+    height: 85%;
+    width: auto;
+    opacity: .15;
+}
+
+#titleTSMC{ /* 2nd way: use {flex-direction: column} to center texts vertically */
+    /* if not relative or static, every elements will put on the same place */
+    position: relative; 
+    /* left: 20%; */ /* there will a big blank on the right of the title and change the page width */
+    padding: 0vh 20vw;
+    margin: 0%;
+    font-size: calc(20px + 2.5vw);
+}
+
+#descTSMC{ /* 2nd way: use {flex-direction: column} to center texts vertically */
+    position: relative;
+    padding: 0vh 20vw;
+    font-size: calc(16px + 0.5vw);
+    color: #1d243d;
+    text-align: left;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;  
+}
+
+@media screen and (max-width: 700px) {
+    #titleTSMC{
+        padding: 0vh 10vw;
+    }
+    #descTSMC{
+        padding: 0vh 10vw;
+    }
+    .level2:nth-child(7)::before, .level2:nth-child(7)::after{
+        background-image: none;
+    }
+}
+
+#products{
+    align-items: center;
+}
+
+#titleProducts{
+    padding: 0vh 0vw 5vh 0vw;
+    margin: 0%;
+    font-size: calc(20px + 2.5vw);
+}
+
+#productsScroll{
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;  
+}
+
+/* https://developer.mozilla.org/zh-TW/docs/Web/HTML/Element/table */
+/* set the table that under #products */
+#productsTable{
+    /* set the cells connect togther or separate */
+    border-collapse: separate; 
+    /* the spacing between cells, attr are left/right, and top/bottom */
+    border-spacing: 0 5px;
+    color: #fff;
+    font-size: calc(12px + 0.5vw);
+}
+
+#products th, #products td{
+    height: 3.5vw;
+    /* padding in cell */
+    padding: 0 10px; 
+}
+
+/* the row is able to click, so I made the cursor change to link style when hover it  */
+#products tbody tr{
+    cursor: pointer;
+}
+
+/* a:hover b means when hoveron a change b */
+#products tbody tr:hover .highCell{
+    background-color: #636363;
+}
+
+#products tbody tr:hover .contentCell{
+    background-color: #818181;
+}
+
+.highCell{ /*highligh cells*/
+    background-color: #555555;
+    /* this is need because the text-align of the head is center */
+    text-align: left;
+}
+
+#products th{ /*cells for name title*/
+    background-color: #555555;
+    font-weight: bold;
+}
+
+.leftCell{
+    width: 18vw;
+    border-radius: 5px 0 0 5px;
+}
+
+.rightCell{
+    border-radius: 0 5px 5px 0;
+}
+
+.contentCell{ /*cells for content*/
+    text-align: right;
+    width: 15vw;
+    background-color: #6e6e6e;
+}
+
+.tableImg{
+    /* if no display: table-cell the logo will not be put on vertical center */
+    display: table-cell;
+    /* after use table-cell, I could only find this way to put logo on right */
+    float: right;
+    height: 2vw;
+    min-height: 30px;
+}
+
+@media screen and (max-width: 700px) {
+    #products table{
+        margin: 0vh 5vw;
+        font-size: 2.3vw;
+    }
+}
+
+/* https://www.hyde-design.co.uk/joomla-bites/80-create-a-css-slideshow-no-javascript-required */
+/* I want to keep it to understand the different methods */
+/* This works, just want to use the way I wrote
+#imgShip{
+    position: relative;
+    height: 20vw;
+    width: auto;
+    padding: calc(46vh - 10vw) calc(20vw / 0.624 + 10vw) 0vh 10vw; /* image width=height/0.624
+    float: left;
+}
+
+#imgShip img{
+    position: absolute;
+    height: 20vw;
+    width: auto;
+    min-height: 150px;
+    opacity: 0;
+    animation: imgSlide 15s infinite;
+}
+
+@keyframes imgSlide {
+    33%  {opacity: 1;}
+    66%  {opacity: 0;}
+}
+
+#imgShip img:nth-child(1){
+    animation-delay: 0s;
+}
+
+#imgShip img:nth-child(2){
+    animation-delay: 5s;
+}
+
+#imgShip img:nth-child(3){
+    animation-delay: 10s;
+}
+*/
+
+#asusShip{ /* 3rd way: use float to put image and description */
+    display: block;
+}
+
+#imgShip{ /* 3rd way: use float to put image and description */
+    /* relative is unnecessary here since I use margin to put elements and the default is static which could also relative to other elements */
+    /* position: relative; */
+    /* the page height is 92vh, image height is 30vw, the middle of the page is 92vh/2, the middle of the img is 30vw/2, so 46vh - 15vw could put elements on center */
+    margin: calc(46vh - 15vw) 5vw; 
+    /* put image on the left and text align to it */
+    float: left;
+    /* use a div to cover the img to achieve zoom in transition */
+    height: 30vw; /* these three lines are use for zoom in transition*/
+    width: auto; /* these three lines are use for zoom in transition*/
+    overflow: hidden; /* these three lines are use for zoom in transition*/
+}
+
+#imgShip img{
+    /* default is static and could not move, so use relative for animation to move img */
+    position: relative; 
+    /* use vw to change height according view width */
+    height: 30vw; 
+    width: auto;
+    opacity: 1;
+    animation: imgSlide 5s infinite;
+    transition-duration: 0.5s;
+}
+
+#imgShip img:hover{
+    transform: scale(1.1);
+}
+
+@keyframes imgSlide {
+    0%   {top: -30vw; opacity: 0;}
+    15%  {top: 0; opacity: 1;}
+    85%  {top: 0; opacity: 1;}
+    100% {top: -30vw; opacity: 0;}
+    /* the transform here will make transition doesn't work */
+    /* 0%   {opacity: 0; transform: scale(.5)}
+    15%  {opacity: 1; transform: scale(1)}
+    85%  {opacity: 1; transform: scale(1)}
+    100% {opacity: 0; transform: scale(.5)} */ 
+}
+
+#titleShip{ /* 3rd way: use float to put image and description */
+    position: relative;
+    /* use padding to put the element */
+    /* maybe previous element is float left, so the paddding left is unable to use */
+    padding: 18vh 6vw 5vh 0vw; 
+    margin: 0px;
+    font-size: calc(16px + 1.8vw);
+}
+
+#descShip{ /* 3rd way: use float to put image and description */
+    position: relative; 
+    height: 45%;
+    padding: 0vh 7vw 0vh 0vw;
+    margin: 0px;
+    font-size: calc(16px + 0.5vw);
+    color: #1d243d;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+@media screen and (max-width: 700px) {
+    /* flex works as usual, just want to try differnt method */
+    /* #asusShip{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    #imgShip{
+        padding: 5vh 0vw;
+    }
+    #titleShip{
+        padding: 0vh 10vw 0vh 10vw;
+    }
+    #descShip{
+        padding: 2vh 10vw 0vh 10vw;
+    } */
+    #imgShip{
+        /* the height is needed for mobile */
+        height: 35vh; 
+        padding: 5vh 0vw;
+        margin: 0;
+        /* put image on top */
+        float: none;
+    }
+    #imgShip img{
+        /* the height is needed for mobile */
+        height: 35vh; 
+        /* put img on certer https://stackoverflow.com/questions/7055393/center-image-using-text-align-center */
+        margin: 0vh auto; 
+    }
+    #titleShip{
+        padding: 0vh 10vw 2vh 10vw;
+        text-align: center;
+    }
+    #descShip{
+        padding: 0vh 10vw 0vh 10vw;
+        text-align: left;
+        /* the height of #imgShip img is 150px or 35vh, the page is 92vh, 25 is the space to bottom */
+        height: calc(92vh - max(150px, 35vh) - 25vh); 
+    }
+}
+
+.shineDiv{ /* 2nd way: use absolute position (display: flex; justify-content: center; flex-direction: column;) to put image */
+    /* do not flex with others, only center it vertically */
+    position: absolute; 
+    /* the img is 750*780, so if width is 25, height would be 25*1.04=26 */ /* auto is not working here */
+    height: 26vw; 
+    width: 25vw;
+    margin: 0vh 15vw;
+    overflow: hidden;
+}
+
+/* add an element at the end of the div to add a shine line on logo*/
+/* learned from samples on jsfiddle.net and codepen.io */
+.shineDiv::after{
+    /* "" > do not add codes. also use for clearfix and background image */ /* Learn more: https://w3c.hexschool.com/blog/19e3259e */ /* https://css-tricks.com/almanac/selectors/a/after-and-before/ */
+    content: ""; 
+    position: absolute;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    /* a parallel box with x -35 degree */ /* https://developer.mozilla.org/en-US/docs/Web/CSS/transform */
+    transform: skewX(-35deg); 
+    animation: shine 3s infinite;
+    /* us gradient from left to right, % is position*/
+    background: linear-gradient(
+        to right, 
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, .1) 90%,
+        rgba(255, 255, 255, .5) 95%,
+        rgba(255, 255, 255, 0) 100%
+    );
+}
+
+/* slide above shine line to right */
+@keyframes shine {
+    0%   {left: -100%; top: 0;}
+    100% {left: 100%; top: 0;}
+}
+
+#excellent{
+    height: auto;
+    width: 25vw;
+}
+
+#titleMark{ /* 2nd way: use {flex-direction: column} to center texts vertically */
+    /* relative with descMark, so the text will not cover others when it is too long */
+    /* this could also be deleted */
+    /* since I use padding to put elements and the default is static which could also relative to other elements */
+    position: relative; 
+    /* I use 45vw here, but 55vw (55vw=25vw+15vw+15vw) could make the left and right padding of the image are the same */
+    padding: 0vh 15vw 5vh 45vw; 
+    margin: 0px;
+    font-size: calc(16px + 1.8vw);
+}
+
+#descMark{ /* 2nd way: use {flex-direction: column} to center texts vertically */
+    /* this could also be deleted */
+    /* relative with titleMark, so the text will not be covered when titleMark is too long */ 
+    position: relative; 
+    /* use auto height and max-height to make sure the element looks on the vertical center */
+    height: auto;
+    max-height: 50%;
+    /* use margin to avoid this become a big element */
+    margin: 0vh 15vw 0vh 45vw;
+    padding: 0px;
+    font-size: calc(16px + 0.5vw);
+    color: #1d243d;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+@media screen and (max-width: 700px) {
+    #marks{
+        align-items: center;
+    }
+    .shineDiv{
+        position: relative;
+        margin: 5px 0vw 3vh 0vw;
+    }
+    #titleMark{
+        padding: 0vh 10vw 2vh 10vw;
+    }
+    #descMark{
+        margin: 0vh 10vw 0vh 10vw;
+    }
+    .level2:nth-child(5)::after{
+        background-image: none;
+    }
+}
+
+#exhibitions{
+    flex-direction: row;
+    align-items: center;
+}
+
+#imgExhib{ /* 2nd way: use absolute position (display: flex; justify-content: center; flex-direction: column;) to put image */
+    /* do not flex with others, only center it vertically */
+    position: absolute; 
+    height: 70%;
+    width: auto;
+}
+
+#titleExhib{
+    position: absolute;
+    top: 20vh;
+    padding: 0vh 20vw;
+    margin: 0%;
+    font-size: calc(20px + 2.5vw);
+    color: white;
+}
+
+.exhibSquare{
+    position: relative;
+    width: 25vw;
+    height: 10vw;
+    margin: 2vh 3vw;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column; 
+}
+
+@media screen and (orientation:portrait) {
+    #exhibitions{
+        flex-direction: column;
+    }
+    #titleExhib{
+        position: relative;
+        margin-bottom: 2vh;
+        top: 0;
+    }
+    .exhibSquare{
+        width: 50vw;
+        height: 13vw;
+    }
+}
+
+#news{
+    align-items: center;
+}
+
+#titleNews{ /* 2nd way: use {flex-direction: column} to center texts vertically */
+    padding: 2vh 10vw;
+    margin: 0%;
+    font-size: calc(20px + 2.5vw);
+}
+
+#collapsibleMenu{
+    position: relative;
+    height: auto;
+    max-height: 60%;
+    margin: 0vh 0vw 3vh 0vw;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.newsTitle{
+    width: 70vw;
+    padding: 1vh 2vw;
+    /* use dashed border */
+    border-style: dashed;
+    /* do not show border on the bottom of the row */
+    border-bottom-style: none;
+    /* set border width */
+    border-width: 1.5px;
+    color: white;
+    background-color: #555555;
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/max() */
+    font-size: max(12px, 1.5vw); 
+}
+
+/* set the first one element that count from last https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-last-of-type */
+.newsTitle:nth-last-of-type(1){
+    border-bottom-style: dashed;
+}
+
+.newsTitle table{
+    border-spacing: 1vw 0vh;
+}
+
+.leftTitle{
+    width: 8vw;
+    background-color: #6e6e6e;
+    padding-left: 1vw;
+}
+
+/* show contents on hover newsTitle */
+.newsTitle:hover .contents{
+    display: block;
+}
+
+/* do not hide contents after leave newsTitle and move in contents */
+.contents:hover{
+    display: block;
+}
+
+/* hide contents first */
+.contents{
+    display: none;
+    position: relative;
+    width: 100%;
+}
+
+.contents p{
+    color: white;
+    font-size: max(12px, 1.5vw);
+}
+
+/* constructing pages */
+.titleX{ /* 2nd way: use {flex-direction: column} to center texts vertically */
+    position: relative; 
+    padding: 0vh 20vw;
+    margin: 0%;
+    font-size: calc(20px + 2.5vw);
+}
+
+.descX{ /* 2nd way: use {flex-direction: column} to center texts vertically */
+    position: relative;
+    padding: 0vh 20vw;
+    font-size: calc(16px + 0.5vw);
+    color: #1d243d;
+    text-align: left;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+
+
+
+
+
+

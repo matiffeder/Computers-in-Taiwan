@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<!-- Unicode for shows characters correctly -->
+<meta charset="utf-8">
+<!-- for responsive https://www.w3schools.com/css/css_rwd_viewport.asp -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+    <head>
+        <!-- page name -->
+        <title>Computers in Taiwan</title> 
+        <!-- load css -->
+        <link rel="stylesheet" href="css\main.css" type="text/css">
+        <!-- set favicon -->
+        <link rel="icon" href="https://matif.neocities.org/img/logo.png" type="image/png">
+        <!-- the other way to load font -->
+        <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif" type="text/css"> -->
+        <!-- use font icon from fontawesome.com -->
+        <script src="https://kit.fontawesome.com/738377a943.js" crossorigin="anonymous"></script>
+        <!-- the functions in preload.js have to load first since the functions is used in the html -->
+        <script src="js\preload.js"></script>
+    </head>
+    <body>
+        <!-- the part of header bar -->
+        <!--<class="XXX"> <id="XXX"> define name of the part, id is specific, class is multi -->
+        <header class="header">
+            <!-- logo shows on header bar with go back to homepage link by use <a href=""> -->
+            <a href="#home"><img id="logo" alt="A blue Taiwan island" title="Logo" src="https://matif.neocities.org/img/logo.png"></a>
+            <!-- title shows on header bar with go back to homepage link by use <a href=""> -->
+            <a href="#home" id="head" title="Back to Homepage">Computers in Taiwan</a>
+            <!-- button to toggle background sound -->
+            <!-- onclick="value = !value" to toggle a boolean value -->
+            <button title="Background Sound" id="mute" onclick="document.getElementById('player').muted=!document.getElementById('player').muted">
+                <!-- caption of the sound -->
+                <span id="muteCaption">Birds Singing Sound</span>
+                <!-- use fontawesome sound icon from fontawesome.com -->
+                <i class="fas fa-volume-down"></i>
+            </button>
+            <!-- button to show navigation menu -->
+            <!-- I figure out how to show slide menu myself. I used a lot of xml and lua before, so I am kind of know the event on html -->
+            <!-- when the button recive mouse over event run the showSide(true) function, showSide(true) is to show navigation menu -->
+            <button id="menu" onmouseover="showSide(true)"><i class="fas fa-bars fa-2x"></i></i></button>
+        </header> <!-- end of header -->
+        <!-- use levels for scroll content https://www.youtube.com/watch?v=vHr3Li0-SP0 -->
+        <!-- the part of main content -->
+        <!-- when the button recive mouse click event run the showSide() function. showSide() and showSide(false) is to hide navigation menu -->
+        <!-- if the navigation menu doesn't hide, users are able to use click function on the most part of the page to hide the menu -->
+        <main class="level1" onclick="showSide()">
+            <!-- use levels for scroll content https://www.youtube.com/watch?v=vHr3Li0-SP0 -->
+            <!-- start of a page, it's a div -->
+            <page class="level2" id="home">
+                <!-- <span> is an inline element https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span -->
+                <span class="homeIcon" id="computer"><i class="fas fa-desktop fa-lg"></i></span>
+                <!-- <p> is for paragraph -->
+                <p id="welcome">
+                    <!-- when the screen size is too short will show <br class="widthWrap">, which means will wrap -->
+                    <!-- <i> is italic, <u> is underline, <b> is bold -->
+                    A website talking <br class="widthWrap">about <i>computers,</i><br><u>and</u>, the topic is <br class="widthWrap">all about <b>Taiwan</b>...
+                </p>
+                <span class="homeIcon" id="arrow"><i class="fas fa-chevron-down fa-sm"></i></span>
+            </page> <!-- end of a page -->
+            <page class="level2" id="why">
+                <!-- put image in page, alt will shows if image is not available, src is the link of the page -->
+                <img id="twIsland" alt="A blue Taiwan island" src="https://matif.neocities.org/img/twIsland.png" >
+                <p class="titleAnimation" id="titleWhy"><b><i>Why Taiwanese Computers Matter?</i></b></p>
+                <p class="descAnimation" id="descWhy">
+                    <b><u>Taiwan</u></b> is a place full of creation and cutting-edge technology. The computer products originated from Taiwanese companies have the most recent techniques and fill all over around the world. The famous brands such as ASUS and Acer are all from Taiwan. Even from chips and PCB to monitors and keyboards, most of them are made by Taiwanese companies. Taiwanese companies always have wonderful ideas and always know how to adapt their advanced technology and ideas to their products.
+                    <!--italicized and underlined https://www.tutorialspoint.com/html/html_formatting.htm-->
+                </p>
+            </page>
+            <page class="level2" id="products">
+                <p class="titleAnimation" id="titleProducts"><b><i>Products from <br class="widthWrap">Taiwanese Companies</i></b></p>
+                <!-- draw table -->
+                <div id="productsScroll">
+                <table class="descAnimation" id="productsTable">
+                    <!-- draw table title -->
+                    <thead>
+                        <!-- draw table row -->
+                        <tr>
+                            <!-- draw table title cloumn -->
+                            <th class="leftCell highCell">Product</th>
+                            <th class="highCell contentCell">Brand</th>
+                            <th class="highCell contentCell">Type</th>
+                            <th class="highCell contentCell">Release Date</th>
+                            <th class="rightCell highCell contentCell">List Price</th>
+                        </tr>
+                    </thead>
+                    <!-- draw table body -->
+                    <tbody>
+                        <!-- onclick="document.location='XXX'" is for navigate to the otherpage https://www.w3schools.com/html/tryit.asp?filename=tryhtml_links_button_element -->
+                        <!-- title will show on mouse over -->
+                        <tr onclick="document.location='#asusShip'" title="Jump to the Product">
+                            <!-- draw table body cloumn -->
+                            <td class="leftCell highCell">Mothership GZ700</td>
+                            <td class="contentCell"><img class="tableImg" alt="The logo of ASUS" title="ASUS" src="https://matif.neocities.org/img/ASUS-w.png"></td>
+                            <td class="contentCell">Laptop</td>
+                            <td class="contentCell">2019</td>
+                            <td class="rightCell contentCell">$6499.99</td>
+                        </tr>
+                        <tr onclick="document.location='#benqProduct'" title="Constructing - Jump to the Product">
+                            <td class="leftCell highCell">ScreenBar Halo</td>
+                            <td class="contentCell"><img class="tableImg" alt="The logo of BenQ" title="BenQ" src="https://matif.neocities.org/img/benq-w.png"></td>
+                            <td class="contentCell">Screen Light</td>
+                            <td class="contentCell">2021</td>
+                            <td class="rightCell contentCell">$179</td>
+                        </tr>
+                        <tr onclick="document.location='#adataProduct'" title="Constructing - Jump to the Product">
+                            <td class="leftCell highCell">GAMMIX S70 BLADE</td>
+                            <td class="contentCell"><img class="tableImg" alt="The logo of ADATA" title="ADATA" src="https://matif.neocities.org/img/ADATA-w.png"></td>
+                            <td class="contentCell">SSD</td>
+                            <td class="contentCell">2021</td>
+                            <td class="rightCell contentCell">$329.99</td>
+                        </tr>
+                        <tr onclick="document.location='#coolerProduct'" title="Constructing - Jump to the Product">
+                            <td class="leftCell highCell">MasterLiquid ML240P</td>
+                            <td class="contentCell"><img class="tableImg" alt="The logo of Cooler Master" title="Cooler Master" src="https://matif.neocities.org/img/cooler.png"></td>
+                            <td class="contentCell">Water Cooling</td>
+                            <td class="contentCell">2020</td>
+                            <td class="rightCell contentCell">$249.99</td>
+                        </tr>
+                        <tr onclick="document.location='#acerProduct'" title="Constructing - Jump to the Product">
+                            <td class="leftCell highCell">Helios 500</td>
+                            <td class="contentCell"><img class="tableImg" alt="The logo of acer" title="acer" src="https://matif.neocities.org/img/acer-w.png"></td>
+                            <td class="contentCell">Laptop</td>
+                            <td class="contentCell">2018</td>
+                            <td class="rightCell contentCell">$4449.99</td>
+                        </tr>
+                        <tr onclick="document.location='#msiProduct'" title="Constructing - Jump to the Product">
+                            <td class="leftCell highCell">RTX 3090 SUPRIM</td>
+                            <td class="contentCell"><img class="tableImg" alt="The logo of MSI" title="MSI" src="https://matif.neocities.org/img/MSI-w.png"></td>
+                            <td class="contentCell">Graphics Card</td>
+                            <td class="contentCell">2021</td>
+                            <td class="rightCell contentCell">$4349.99</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </page>
+            <page class="level2" id="asusShip">
+                <!-- put images in one div to show slide show -->
+                <div id="imgShip">
+                    <img class="slideShow" alt="An ASUS laptop that keyboard is able to detach" title="ASUS Mothership" src="https://matif.neocities.org/img/asusShip1.png">
+                    <img class="slideShow" alt="An ASUS laptop" title="ASUS Mothership" src="https://matif.neocities.org/img/asusShip2.png">
+                    <img class="slideShow" alt="An ASUS laptop that highlighted the speaker" title="ASUS Mothership" src="https://matif.neocities.org/img/asusShip3.png">
+                </div>
+                <!-- ↓↓↓ use for without slide show -->
+                <!-- <img id="imgShip" alt="An ASUS laptop that keyboard is able to detach" title="ASUS Mothership" src="https://matif.neocities.org/img/asusShip1.png"> -->
+                <p class="titleAnimation" id="titleShip"><b><i>ASUS Mothership GZ700</i></b></p>
+                <p class="descAnimation" id="descShip">
+                    <!-- from ASUS.com -->
+                    <b><u>ASUS Mothership GZ700</u></b> is a portable and powerful Windows 10 computer with an innovative vertical design to enhance the heat dissipation of its original overclocked GeForce RTX™ 2080 GPU and 8th generation Intel® Core™ i9 CPU. The detachable keyboard provides the user with complete control, while the NVIDIA G-SYNC™ display has amazingly clear and detailed 4K high-quality images with rich colors to provide a smooth, clear and unbroken visual experience. SSD RAID storage devices and 2.5G Ethernet bring super fast performance to this revolutionary gaming computer. 
+                </p>
+            </page>
+            <page class="level2" id="companies"> <!--for scroll content-->
+                <p class="titleAnimation" id="titleCompanies"><b><i>Part of Taiwanese Companies</i></b></p>
+                <!-- the row class will show only on normal screen size -->
+                <div class="row">
+                    <a href="#TSMC"><img class="listImg" alt="The logo of Taiwan Semiconductor Manufacturing Co." title="Jump to TSMC" src="https://matif.neocities.org/img/TSMC.png"></a>
+                    <a href="#quanta"><img class="listImg" alt="The logo of Quanta" title="Constructing - Jump to Quanta" src="https://matif.neocities.org/img/quanta.png"></a>
+                    <a href="#foxconn"><img class="listImg" alt="The logo of Foxconn" title="Constructing - Jump to Foxconn" src="https://matif.neocities.org/img/foxconn.png"></a>
+                </div>
+                <div class="row">
+                    <a href="#benq"><img class="listImg" alt="The logo of BenQ" title="Constructing - Jump to BenQ" src="https://matif.neocities.org/img/benq.png"></a>
+                    <a href="#ADATA"><img class="listImg" alt="The logo of ADATA" title="Constructing - Jump to ADATA" src="https://matif.neocities.org/img/ADATA.png"></a>
+                    <a href="#cooler"><img class="listImg" alt="The logo of Cooler Master" title="Constructing - Jump to Cooler Master" src="https://matif.neocities.org/img/cooler.png"></a>
+                </div>    
+                <div class="row">
+                    <a href="#ASUS"><img class="listImg" alt="The logo of ASUS" title="Constructing - Jump to ASUS" src="https://matif.neocities.org/img/ASUS.png"></a>
+                    <a href="#acer"><img class="listImg" alt="The logo of acer" title="Constructing - Jump to acer" src="https://matif.neocities.org/img/acer.png"></a>
+                    <a href="#MSI"><img class="listImg" alt="The logo of MSI" title="Constructing - Jump to MSI" src="https://matif.neocities.org/img/MSI.png"></a>
+                </div>   
+                <!-- the reaponded-row class will show only on smaller screen size --> 
+                <a class="reaponded-row" href="#foxconn"><img class="listImg" alt="The logo of Foxconn" title="Constructing - Jump to Foxconn" src="https://matif.neocities.org/img/foxconn.png"></a>
+                <div class="reaponded-row">
+                    <a href="#TSMC"><img class="listImg" alt="The logo of Taiwan Semiconductor Manufacturing Co." title="Constructing - Jump to TSMC" src="https://matif.neocities.org/img/TSMC.png"></a>
+                    <a href="#quanta"><img class="listImg" alt="The logo of Quanta" title="Constructing - Jump to Quanta" src="https://matif.neocities.org/img/quanta.png"></a>
+                    <a href="#benq"><img class="listImg" alt="The logo of BenQ" title="Constructing - Jump to Transcend" src="https://matif.neocities.org/img/benq.png"></a>
+                </div>
+                <div class="reaponded-row">
+                    <a href="#ADATA"><img class="listImg" alt="The logo of ADATA" title="Constructing - Jump to ADATA" src="https://matif.neocities.org/img/ADATA.png"></a>
+                    <a href="#cooler"><img class="listImg" alt="The logo of Cooler Master" title="Constructing - Jump to Cooler Master" src="https://matif.neocities.org/img/cooler.png"></a>
+                    <a href="#ASUS"><img class="listImg" alt="The logo of ASUS" title="Constructing - Jump to ASUS" src="https://matif.neocities.org/img/ASUS.png"></a>
+                </div>    
+                <div class="reaponded-row">
+                    <a href="#acer"><img class="listImg" alt="The logo of acer" title="Constructing - Jump to acer" src="https://matif.neocities.org/img/acer.png"></a>
+                    <a href="#MSI"><img class="listImg" alt="The logo of MSI" title="Constructing - Jump to MSI" src="https://matif.neocities.org/img/MSI.png"></a>
+                </div>    
+            </page>
+            <page class="level2" id="TSMC">
+                <img id="imgTSMC" alt="The logo of Taiwan Semiconductor Manufacturing Co." src="https://matif.neocities.org/img/TSMC.png">
+                <p class="titleAnimation" id="titleTSMC"><b><i>Taiwan Semiconductor Manufacturing Co.</i></b></p>
+                <p class="descAnimation" id="descTSMC">
+                    <b><u>Taiwan Semiconductor Manufacturing Co. (TSMC)</u></b> is the biggest foundry in the world. They hold more than 50% market share globally. TSMC was the world's first dedicated semiconductor foundry and has long been the leading company in its field. That means most of the chips in electric products are made by TSMC. After AMD cooperates with TSMC in recent years, the market share of AMD starts to increase and become stronger since the technics that TSMC hold is ahead of Intel and Intel make CPUs themselves.
+                    <!-- https://en.wikipedia.org/ and myself -->
+                </p>
+            </page>
+            <page class="level2" id="marks">
+                <!-- a div to cover the image to show shine effect -->
+                <div class="shineDiv" title="Taiwan Excellence Award">
+                    <img id="excellent" alt="The mark of Taiwan Excellence Award which have six red curves" title="Taiwan Excellence Award" src="https://matif.neocities.org/img/excellentAward.svg">
+                </div>
+                <p class="titleAnimation" id="titleMark"><b><i>Taiwan Excellence Award</i></b></p>
+                <p class="descAnimation" id="descMark">
+                    <b><u>Taiwan Excellence Award</u></b> is an Award for the top products from Taiwan including computers and promotes Taiwanese products to the world. The selection mechanism is based on the four major parts that are "R&D", "Design", "Quality" and "Marketing". The awards will be selected by international professional judges to select the "Taiwan Excellence Gold Award" and the "Taiwan Excellence Silver Award", which symbolize the highest honor of Taiwan products. Therefore, if you are looking for the best computer products, try to find the product that shows the Taiwan Excellence Mark.
+                </p>
+            </page>
+            <page class="level2" id="exhibitions">
+                <img id="imgExhib" alt="A background image shows PCB" src="https://matif.neocities.org/img/exhibitions.png">
+                <p class="titleAnimation" id="titleExhib"><b><i>Exhibitions</i></b></p>
+                <!-- div to show same size white squares with link under image -->
+                <a href="#SEMICON"><div class="descAnimation exhibSquare" title="Constructing - Jump to SEMICON TAIWAN">
+                    <img class="imgExhibLogo" alt="SEMICON TAIWAN" title="Constructing - Jump to SEMICON TAIWAN" src="https://matif.neocities.org/img/exhibition1.png">
+                </div></a>
+                <a href="#TAITRONICS"><div class="descAnimation exhibSquare" title="Constructing - Jump to TAITRONICS">
+                    <img class="imgExhibLogo" alt="TAITRONICS" title="Constructing - Jump to TAITRONICS" src="https://matif.neocities.org/img/exhibition2.jpg">
+                </div></a>
+                <a href="#COMPUTEX"><div class="descAnimation exhibSquare" title="Constructing - Jump to COMPUTEX">
+                    <img class="imgExhibLogo" alt="COMPUTEX" title="Constructing - Jump to COMPUTEX" src="https://matif.neocities.org/img/exhibition3.png">
+                </div></a>
+            </page>
+            <page class="level2" id="news">
+                <p class="titleAnimation" id="titleNews"><b><i>News in Taiwanese Computer Industry</i></b></p>
+                <!-- the way to write mouseover collapsible menu is I found when I was making subnavigation menu -->
+                <div class="descAnimation" id="collapsibleMenu">
+                    <div class="newsTitle">
+                        <!-- use table to align dates and titles -->
+                        <table><tr><td class="leftTitle">Dec 12</td><td class="rightTitle"><b>SEMICON Taiwan 2021 Postponed</b></td></tr></table>
+                        <!-- ↓↓↓ this would hide if no mouseover on the parant div -->
+                        <div class="contents">
+                            <p>SEMI (International Semiconductor Industry Association) announced today (27) that the SEMICON Taiwan 2021 International Semiconductor Exhibition will be held from December 28th to 30th in Taipei Nangang Exhibition Hall. In the past three months of concerted efforts to prevent the epidemic, not only have several counties and cities maintained zero diagnosis in recent days. As the epidemic is getting under control and policies are gradually opening up conventions and exhibitions, SEMI welcomes the gradual unfolding of industrial activities, considering that Taiwan plays the most important role as a partner in the global semiconductor industry. https://www.semi.org</p>
+                        </div>
+                    </div>
+                    <div class="newsTitle">
+                        <table><tr><td class="leftTitle">Dec 11</td><td class="rightTitle"><b>Asus to Launch New Chromebook</b></td></tr></table>
+                        <div class="contents">
+                            <p>Asus Chromebooks with military-grade durability will be launched in India on December 13, the company announced on Thursday. The Taiwanese technology giant also said that it will unveil laptops for creators at a virtual launch event scheduled for December 14. Asus says it has tied up with Flipkart for the Chromebook launch but there is no such information about the creator series. Asus in August launched Chromebook Detachable CZ1 laptop as a 2-in-1 option for students. It features US military-grade toughness that is claimed to withstand a drop from a classroom desk. https://gadgets.ndtv.com/</p>
+                        </div>
+                    </div>
+                    <div class="newsTitle">
+                        <table><tr><td class="leftTitle">Dec 9</td><td class="rightTitle"><b>Intel CEO to Visit Taiwan, Home of Biggest Chipmaking Rival</b></td></tr></table>
+                        <div class="contents">
+                            <p>Intel Corp. Chief Executive Officer Pat Gelsinger will visit Taiwan and Malaysia next week for talks that show how manufacturing in Asia is crucial to his efforts to turn around the fortunes of the world’s largest chipmaker by revenue. https://www.bloomberg.com/</p>
+                        </div>
+                    </div>
+                    <div class="newsTitle">
+                        <table><tr><td class="leftTitle">Dec 7</td><td class="rightTitle"><b>Innolux Technology Breakthrough won Taiwan Excellence Award</b></td></tr></table>
+                        <div class="contents">
+                            <p>Innolux announced today (24) that the exclusive first "Floating Video Smart Speaker" won the national highest honor and the 30th "Taiwan Excellence Silver Award" affirmed. The other four innovative technology products also won the "Taiwan Excellence Award" badge. Innolux has won awards for 16 consecutive years. This year, it was again favored by judges, fully demonstrating its excellent product development, innovation, design and manufacturing capabilities. https://www.innolux.com/</p>
+                        </div>
+                    </div>
+                    <div class="newsTitle">
+                        <table><tr><td class="leftTitle">Dec 6</td><td class="rightTitle"><b>Gigabyte BRIX mini PC</b></td></tr></table>
+                        <div class="contents">
+                            <p>Gigabyte is updating its BRIX line of mini PCs with new models sporting AMD Ryzen 5000U processors. First unveiled in June, Gigabyte has added details for the new Gigabyte BRIX Extreme series to its website, which means we have more details about the 5.5″ x 5.3″ x 1.7″ computer with support for up to an AMD Ryzen 7 5700U processor. https://liliputing.com/</p>
+                        </div>
+                    </div>
+                    <div class="newsTitle">
+                        <table><tr><td class="leftTitle">Dec 3</td><td class="rightTitle"><b>D-Link releases new 6-port, multi-gigabit switch for SMBs</b></td></tr></table>
+                        <div class="contents">
+                            <p>D-Link has announced the availability of the 6-Port Multi-Gigabit Unmanaged Switch (DMS-106XT). The product expands the D-Link family of multi-Gigabit-enabled devices and is suited for SMBs and advanced users. https://www.telecompaper.com/</p>
+                        </div>
+                    </div>
+                    <div class="newsTitle">
+                        <table><tr><td class="leftTitle">Dec 4</td><td class="rightTitle"><b>TeamGroup Announces 'Industrial' 3D TLC NVMe SSD Lineup</b></td></tr></table>
+                        <div class="contents">
+                            <p>TeamGroup today announced a pair of new PCIe 3.0 NVMe SSD solutions under its "Industrial" branding. The new M.2 2280 SSDs (N75A-M80 and N75G-M80) are marketed as having industrial-grade resilience and patented cooling technologies for performance and reliability in 24-hour, high-workload environments. https://www.tomshardware.com/</p>
+                        </div>
+                    </div>
+                </div>
+            </page>
+            <!-- these 3 pages are under construction -->
+            <page class="level2" id="history">
+                <!-- <img id="imgX" alt="" title="" src="https://matif.neocities.org/img/X.png"> -->
+                <p class="titleAnimation titleX" id=""><b><i>History - Coming Soon</i></b></p>
+                <p class="descAnimation descX" id="">
+                    <b><u>This</u></b> page is under construction and would be coming soon...
+                </p>
+            </page>
+            <page class="level2" id="faq">
+                <!-- <img id="imgX" alt="" title="" src="https://matif.neocities.org/img/X.png"> -->
+                <p class="titleAnimation titleX" id=""><b><i>FAQ - Coming Soon</i></b></p>
+                <p class="descAnimation descX" id="">
+                    <b><u>This</u></b> page is under construction and would be coming soon...
+                </p>
+            </page>
+            <page class="level2" id="links">
+                <!-- <img id="imgX" alt="" title="" src="https://matif.neocities.org/img/X.png"> -->
+                <p class="titleAnimation titleX" id=""><b><i>Links - Coming Soon</i></b></p>
+                <p class="descAnimation descX" id="">
+                    <b><u>This</u></b> page is under construction and would be coming soon...
+                </p>
+            </page>
+            <!-- sideNav should put under level2s to make links available -->
+            <!-- when click on parent option on sideNav, the subSide options will not hide until mouse leave -->
+            <!-- so I use js to hide subSide after click on sideNav since css is not able to do -->
+            <!-- showSubSide('xxx') or showSubSide('xxx', flase) will hide xxx  -->
+            <!-- showSubSide('xxx', ture) will show xxx  -->
+            <nav id="sideNav" onmouseleave="showSide()" onclick="showSubSide('sub1'); showSubSide('sub2'); showSubSide('sub3')">
+                <a href="#home" onmouseover="showSubSide('sub1', true)" onmouseleave="showSubSide('sub1')">Home
+                    <!-- ↓↓↓ subSide would hide if mouseleave the parant, so use onmouseover event to show the content again -->
+                    <div class="subSide" id="sub1" onmouseover="showSubSide('sub1', true)" onmouseleave="showSubSide('sub1')">
+                        <a href="#why" title="Why Taiwanese Computers Matter?">Why</a>
+                        <a href="#history" title="Constructing - History of Computers in Taiwan"><del>History</del></a>
+                    </div>
+                </a>
+                <a href="#products" title="Taiwanese Computer Companies & Products" onmouseover="showSubSide('sub2', true)" onmouseleave="showSubSide('sub2')">Products
+                    <div class="subSide" id="sub2" onmouseover="showSubSide('sub2', true)" onmouseleave="showSubSide('sub2')">
+                        <!-- <a href="#companiesList" title="Company List">List</a> -->
+                        <a href="#products">Products</a>
+                        <a href="#companies">Companies</a>
+                    </div>
+                </a>
+                <a href="#marks" title="Taiwan Excellence Award Mark">Mark</a>
+                <a href="#exhibitions" title="Introductions of Taiwanese Computer Exhibitions">Exhibitions</a>
+                <a href="#news" title="News about Taiwanese Computer">News</a>
+                <!-- if i use text formating like <s> or <del> the sub menu will not hide after click -->
+                <a href="#faq" title="Constructing" onmouseover="showSubSide('sub3', true)" onmouseleave="showSubSide('sub3')">More
+                    <div class="subSide" id="sub3" onmouseover="showSubSide('sub3', true)" onmouseleave="showSubSide('sub3')">
+                        <a href="#faq" title="Constructing - FAQ about Taiwanese Computers"><del>FAQ</del></a>
+                        <a href="#links" title="Constructing - Useful links for Taiwanese Computers"><del>Links</del></a>
+                    </div>
+                </a>
+            </nav>
+            <!-- thie part is for css hover, but I want the subSide hide after click on sideNav and can't find a good way on css -->
+            <!-- I left here because I wrote it and I think I might use it in the future -->
+            <!-- <nav id="sideNav" onmouseleave="showSide()">
+                <a href="#home">Home
+                    <div class="subSide" id="sub1">
+                        <a href="#about" title="About the site">About</a>
+                        <a href="#why" title="Why Taiwanese Computers Matter?">Why</a>
+                        <a href="#history" title="History of Computers in Taiwan">History</a>
+                    </div>
+                </a>
+                <a href="#companies" title="Taiwanese Computer Products">Products
+                    <div class="subSide" id="sub2">
+                        <a href="#companies">Companies</a>
+                        <a href="#products">Products</a>
+                    </div>
+                </a>
+                <a href="#marks" title="Taiwan Excellence Award Mark">Mark</a>
+                <a href="#exhibitions" title="Introductions of Taiwanese Computer Exhibitions">Exhibitions</a>
+                <a href="#news" title="News about Taiwanese Computer">News</a>
+                <a href="#more">More
+                    <div class="subSide" id="sub3">
+                        <a href="#where" title="Where to Find Taiwanese Computers">Where</a>
+                        <a href="#faq" title="FAQ about Taiwanese Computers">FAQ</a>
+                        <a href="#links" title="Useful links for Taiwanese Computers">Links</a>
+                    </div>
+                </a>
+            </nav> -->
+            <!-- basic menu
+            <div id="sideNav" onmouseleave="showSide()">
+                <br style="font-size:smaller">
+                <a href="#home">Home</a>
+                <a href="#why">Why</a>
+                <a href="#marks">Marks</a>
+                <a href="#companies">Products</a>
+                <a href="#exhibitions">Exhibitions</a>
+                <a href="#news">News</a>
+                <a href="#more">More</a>
+            </div>-->
+            <!-- the audio player shows no control (if need control, use: <audio controls autoplay loop>) -->
+            <audio id="player" autoplay loop muted>
+                <!-- my account is not allow to upload mp3 to neocities
+                mp3 source https://bigsoundbank.com/droit.html -->
+                <source src="https://bigsoundbank.com/UPLOAD/mp3/0222.mp3" type="audio/mp3">
+                Someting went wrong on the audio element.
+            </audio>
+        </main>
+        <script src="js\main.js"></script>
+    </body>
+</html>
